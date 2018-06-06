@@ -104,7 +104,7 @@
     "mocha": "^2.3.4",
     "mocha-lcov-reporter": "^1.0.0",
     "open": "0.0.5",
-    "phantomjs-prebuilt": "2.1.4",
+    "phantomjs-prebuilt": "2.1.16",
     "pixrem": "^3.0.1",
     "requirejs": "2.1.22",
     "sinon": "1.17.2",
