@@ -15,12 +15,12 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 require('./config/environment/' + process.env.NODE_ENV);
 
 connectOptions = {
-    db    : {native_parser: true},
-    server: {poolSize: 5},
+    // db    : {native_parser: true},
+    poolSize: 5,
     w     : 1,
     j     : true
 };
-mainDb = mongoose.createConnection(process.env.MAIN_DB_HOST, process.env.MAIN_DB_NAME, process.env.DB_PORT, connectOptions);
+mainDb = mongoose.createConnection('mongodb://' + process.env.MAIN_DB_HOST + ':' + process.env.DB_PORT + '/' + process.env.MAIN_DB_NAME, connectOptions);
 mainDb.on('error', function (err) {
     err = err || 'connection error';
     console.error(err);
@@ -63,12 +63,11 @@ mainDb.once('open', function callback() {
                 url   : ''
             };
             var opts = {
-                db    : {native_parser: true},
-                server: {poolSize: 5},
+                poolSize: 5,
                 w     : 1,
                 j     : true
             };
-            var dbObject = mongoose.createConnection(_db.url, _db.DBname, _db.port, opts);
+            var dbObject = mongoose.createConnection('mongodb://' + _db.url + ':' + _db.port + '/' + _db.DBname, opts);
 
             dbObject.on('error', function (err) {
                 console.error(err);
@@ -107,5 +106,3 @@ mainDb.once('open', function callback() {
 
     mainDb.mongoose = mongoose;
 });
-
-

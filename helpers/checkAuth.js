@@ -1,7 +1,7 @@
 module.exports = function (req, res, next) {
     'use strict';
     var err;
-
+    console.log(req.session);
     if (req.session && req.session.loggedIn && req.session.lastDb) {
         return next();
     }

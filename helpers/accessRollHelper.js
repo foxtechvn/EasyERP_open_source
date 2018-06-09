@@ -14,7 +14,7 @@ module.exports = function (models) {
     return function (req, Model, waterfallCb) {
         departmentSearcher = function (waterfallCallback) {
             models.get(req.session.lastDb, 'Department', DepartmentSchema).aggregate(
-                {
+                [{
                     $match: {
                         users: objectId(req.session.uId)
                     }
@@ -22,7 +22,7 @@ module.exports = function (models) {
                     $project: {
                         _id: 1
                     }
-                },
+                }],
                 waterfallCallback);
         };
 
@@ -36,14 +36,14 @@ module.exports = function (models) {
             };
 
             Model.aggregate(
-                {
+                [{
                     $match: matchQuery
                 },
                 {
                     $project: {
                         _id: 1
                     }
-                },
+                }],
                 waterfallCallback
             );
         };

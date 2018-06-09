@@ -49,13 +49,13 @@ define([
             e.stopPropagation();
             e.preventDefault();
 
-            if (!mobilePhone) {
-                err += 'Phone number is required';
-            }
-
-            if (mobilePhone.length && (mobilePhone.length < 12 || isNaN(Number(mobilePhone)))) {
-                return App.render({type: 'error', message: 'Please, enter valid Mobile Phone'});
-            }
+            // if (!mobilePhone) {
+            //     err += 'Phone number is required';
+            // }
+            //
+            // if (mobilePhone.length && (mobilePhone.length < 12 || isNaN(Number(mobilePhone)))) {
+            //     return App.render({type: 'error', message: 'Please, enter valid Mobile Phone'});
+            // }
 
             if (err) {
                 App.render({type: 'error', message: err});
